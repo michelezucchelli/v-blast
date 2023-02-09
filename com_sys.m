@@ -1,5 +1,5 @@
 function [ber_zf, ber_vblast] = com_sys(numTx, numRx, symbols, modOrder, snr)
-
+tic
 % array of ones with length equal to number of tx antennas
 deltas = ones(1,numTx);
 % number of symbols transmitte
@@ -68,6 +68,7 @@ H=reshape(h,numTx,numRx,numSymbol/numRx);
         [~, tmp_ser_zf] = symerr(symbols, y_final_zf);
         ber_zf(k) = tmp_ser_zf / log2(modOrder);
         % -------------------------------------------------- %
-        
+        k / lenSnr * 100
     end
+toc
 end
