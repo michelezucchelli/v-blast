@@ -1,10 +1,10 @@
-function [ber_zf, ber_vblast] = com_sys(numTx, numRx, symbols, modOrder, snr)
+function [ber_zf, ber_vblast] = com_sys(numTx, numRx, symbols, modOrder, eb_n0)
 % array of ones with length equal to number of tx antennas
 deltas = ones(1,numTx);
 % number of symbols transmitte
 numSymbol = length(symbols);
-%length of snr vector
-lenSnr = length(snr);
+%length of eb_n0 vector
+lenEbN0 = length(eb_n0);
 
 %% Modulation
 % modulate input signal x using QAM with specified modulation order M
@@ -36,16 +36,23 @@ y = reshape(tmp, numRx, numSymbol/numRx);
 H=reshape(h,numTx,numRx,numSymbol/numRx);
 
 %% Receiver
-    for k=1:lenSnr % loop through each snr value
+    for k=1:lenEbN0 % loop through each Eb/N0 value
         % generate noise signal
         N1 = 1 / sqrt(2) * (randn(1,numSymbol)+1i * randn(1,numSymbol)); 
         % reshape the noise signal
         N1 = reshape(N1, numRx, numSymbol/numRx); 
          
         % add noise to received signal
-        ynoisy=y+10^(-(snr(k)-10 * log10(modOrder))/20) *N1; 
+        % ynoisy = y + 10^(-(snr(k)-10 * log10(modOrder))/20) *N1; 
+        %---------------------------------------------------------------%
+        % Calculate the noise power
+        noisePower = 1 / (2 * log2(modOrder)) * 10^(-eb_n0(k) / 10);
+        % add noise to received signal
+        ynoisy = y + sqrt(noisePower) * N1;
+        %---------------------------------------------------------------%
+        
         % reshape the received signal with noise
-        ynoisy=reshape(ynoisy,numRx,1,numSymbol/numRx); 
+        ynoisy = reshape(ynoisy,numRx,1,numSymbol/numRx); 
     
         % --------------------- VBLAST --------------------- %     
         y_final_vblast = vblast_decoding(ynoisy, H, numSymbol, numRx);
@@ -69,5 +76,6 @@ H=reshape(h,numTx,numRx,numSymbol/numRx);
         % Convert to bit error rate
         ber_zf(k) = tmp_ser_zf / log2(modOrder);
         % -------------------------------------------------- %
+        k * 100 / lenEbN0
     end
 end

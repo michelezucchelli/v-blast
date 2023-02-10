@@ -13,6 +13,7 @@ function rcvd = zero_forcing_decoding(num_symbols, numRx, H, ynoisy)
 end
 
 
+
 %% Function Description
 % Function that performs zero-forcing equalization on a noisy received 
 % signal ynoisy given as input. It returns the final equalized signal in rcvd.

@@ -20,16 +20,12 @@ function y_final = vblast_decoding(y_noisy, H, num_symbols, numRx)
             % calculate the pseudo-inverse of Heq
             B = pinv(Heq); 
             % calculate the magnitude square of B
-            b = abs(B .* B); 
-            
+            b = abs(B .* B);
             % sum the values of half of the columns
-            temp_sum = zeros(numRx, 1); 
-            for q = 1:numRx/2
-                temp_sum = temp_sum + b(:,q);
-            end
-            b = temp_sum;
+            b = sum(b(:, 1:numRx/2), 2);
             % add the values in r_counter to the values in b
-            b = b + r_counter;
+            b = b + reshape(r_counter, numRx, 1);
+           
             % find the minimum value of b and its index
             [~, dd] = min(b,[],1);
             
