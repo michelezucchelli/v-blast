@@ -1,4 +1,4 @@
-function y_final = vblast_demodulation(y_noisy, H, num_symbols, numRx)
+function y_final = vblast_decoding(y_noisy, H, num_symbols, numRx)
     % initialize final demodulated signal
     y_final = [];
     

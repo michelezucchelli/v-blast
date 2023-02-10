@@ -1,4 +1,4 @@
-function rcvd = zero_forcing_equalization(num_symbols, numRx, H, ynoisy)
+function rcvd = zero_forcing_decoding(num_symbols, numRx, H, ynoisy)
     rcvd = []; % Initialize an empty rcvd matrix
 
     % Loop through each symbol

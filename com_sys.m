@@ -1,5 +1,4 @@
 function [ber_zf, ber_vblast] = com_sys(numTx, numRx, symbols, modOrder, snr)
-tic
 % array of ones with length equal to number of tx antennas
 deltas = ones(1,numTx);
 % number of symbols transmitte
@@ -49,26 +48,26 @@ H=reshape(h,numTx,numRx,numSymbol/numRx);
         ynoisy=reshape(ynoisy,numRx,1,numSymbol/numRx); 
     
         % --------------------- VBLAST --------------------- %     
-        y_final_vblast = vblast_demodulation(ynoisy, H, numSymbol, numRx);
+        y_final_vblast = vblast_decoding(ynoisy, H, numSymbol, numRx);
         y_final_vblast = reshape(y_final_vblast, 1, []); 
         
         % Calculate the symbol error rate
-        [~, tmp_ser_vb]=symerr(symbols,y_final_vblast); 
+        [~, tmp_ser_vb]=symerr(symbols,y_final_vblast);         
+        % Convert to bit error rate
         ber_vblast(k)=tmp_ser_vb/log2(modOrder);     
         % -------------------------------------------------- %
         
         
         % ----------------------- ZF ----------------------- %
         % Compute received signal matrix using zero_forcing_equalization function
-        rcvd_zf = zero_forcing_equalization(numSymbol, numRx, H, ynoisy);
+        rcvd_zf = zero_forcing_decoding(numSymbol, numRx, H, ynoisy);
         
         % Demodulate the received signal
         y_final_zf = qamdemod(reshape(rcvd_zf, 1, numSymbol), modOrder);
         % Calculate the symbol error rate
-        [~, tmp_ser_zf] = symerr(symbols, y_final_zf);
+        [~, tmp_ser_zf] = symerr(symbols, y_final_zf);        
+        % Convert to bit error rate
         ber_zf(k) = tmp_ser_zf / log2(modOrder);
         % -------------------------------------------------- %
-        k / lenSnr * 100
     end
-toc
 end
