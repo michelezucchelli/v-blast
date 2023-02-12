@@ -1,5 +1,4 @@
 function rcvd = zero_forcing_decoding(num_symbols, numRx, H, ynoisy)
-tic
     rcvd = zeros(numRx, num_symbols/numRx);
 
     for k = 1:num_symbols/numRx
@@ -8,7 +7,6 @@ tic
         % Perform zero-forcing equalization
         rcvd(:,k) = B * ynoisy(:,k);
     end
-toc
 end
 
 

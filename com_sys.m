@@ -59,7 +59,6 @@ ber_zf = zeros(1,lenEbN0);
         % reshape the received signal with noise
         ynoisy = reshape(ynoisy,numRx,1,num_symbols/numRx); 
         
-        fprintf('vblast ')
         % --------------------- VBLAST --------------------- %     
         y_final_vblast = vblast_decoding(num_symbols, numRx, H, ynoisy);
         y_final_vblast = reshape(y_final_vblast, 1, []); 
@@ -69,8 +68,7 @@ ber_zf = zeros(1,lenEbN0);
         % Convert to bit error rate
         ber_vblast(k)=tmp_ser_vb/log2(modOrder);     
         % -------------------------------------------------- %
-        fprintf('zf ')
-        
+                
         % ----------------------- ZF ----------------------- %
         % Compute received signal matrix using zero_forcing_equalization function
         rcvd_zf = zero_forcing_decoding(num_symbols, numRx, H, ynoisy);
