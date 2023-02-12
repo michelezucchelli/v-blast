@@ -1,38 +1,27 @@
 function rcvd = zero_forcing_decoding(num_symbols, numRx, H, ynoisy)
-    rcvd = []; % Initialize an empty rcvd matrix
+tic
+    rcvd = zeros(numRx, num_symbols/numRx);
 
-    % Loop through each symbol
-    for l = 1:num_symbols/numRx
-        % Transpose the l-th channel matrix
-        Heq = transpose(H(:,:,l));
-        % Calculate the pseudo inverse of Heq
-        B = pinv(Heq);
+    for k = 1:num_symbols/numRx
+        % Calculate the pseudo inverse of the transpose of the k-th channel matrix
+        B = pinv(H(:,:,k).');
         % Perform zero-forcing equalization
-        rcvd = [rcvd, B * ynoisy(:,:,l)]; % Concatenate the result of zero-forcing equalization to rcvd matrix
+        rcvd(:,k) = B * ynoisy(:,k);
     end
+toc
 end
 
 
-
 %% Function Description
-% Function that performs zero-forcing equalization on a noisy received 
-% signal ynoisy given as input. It returns the final equalized signal in rcvd.
-% - num_symbols and numRx are scalars indicating the total number of 
-% symbols transmitted and the number of receiving antennas.
-% - H is the channel matrix that represents the wireless communication 
-% channel.
-% - ynoisy is the noisy received signal, where each ynoisy(:,:,l) represents 
-% the l-th symbol in the received signal.
+% The code starts by initializing a 2-dimensional matrix rcvd to store the
+% decoded symbols.
 % 
-% The function performs the following steps:
-% 1 - Initialize an empty matrix rcvd to store the equalized signal.
-% 2 - Loop through each symbol in the received signal.
-% 3 - For each symbol, calculate the transpose of the l-th channel matrix 
-% and store it in Heq.
-% 4 - Calculate the pseudo inverse of Heq and store it in B.
-% 5 - Perform zero-forcing equalization by multiplying B with the 
-% corresponding symbol in the noisy received signal, ynoisy(:,:,l).
-% 6 - Concatenate the result of zero-forcing equalization to the rcvd 
-% matrix.
-% 7 - Repeat the above steps for each symbol in the received signal.
-% Finally, the function returns the final equalized signal in rcvd.
+% In the for loop, the code performs zero-forcing equalization for each 
+% symbol. The pseudo-inverse of the transpose of the k-th channel matrix is 
+% calculated using the pinv function. The zero-forcing equalization is 
+% performed by multiplying the pseudo-inverse of the transpose of the k-th 
+% channel matrix and the k-th column of the received signal. The result of 
+% this calculation is stored in the k-th column of the rcvd matrix.
+% 
+% The final result of the code is the rcvd matrix, which contains the 
+% decoded symbols.

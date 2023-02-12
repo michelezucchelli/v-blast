@@ -1,14 +1,14 @@
-function y_final = vblast_decoding(y_noisy, H, num_symbols, numRx)
+function y_final = vblast_decoding(num_symbols, numRx, H, ynoisy)
     % initialize final demodulated signal
-    y_final = [];
-    
+    y_final = zeros(numRx, num_symbols/numRx);
+
     % loop through each symbol
     for l = 1:num_symbols/numRx
         % initialize r_counter to keep track of selected receive antennas
         r_counter = zeros(numRx,1);
         
         % get the received signal for this symbol
-        r = y_noisy(:,:,l);
+        r = ynoisy(:,:,l);
         
         % get the channel matrix for this symbol
         Heq = transpose(H(:,:,l));
@@ -20,9 +20,7 @@ function y_final = vblast_decoding(y_noisy, H, num_symbols, numRx)
             % calculate the pseudo-inverse of Heq
             B = pinv(Heq); 
             % calculate the magnitude square of B
-            b = abs(B .* B);
-            % sum the values of half of the columns
-            b = sum(b(:, 1:numRx/2), 2);
+            b = sum(abs(B) .^ 2, 2);
             % add the values in r_counter to the values in b
             b = b + reshape(r_counter, numRx, 1);
            
@@ -46,7 +44,7 @@ function y_final = vblast_decoding(y_noisy, H, num_symbols, numRx)
             Heq(:,dd) = 0; 
         end
         % add the demodulated symbols to the final demodulated signal
-        y_final = [y_final, ydemod];
+        y_final(:,l) = ydemod;
     end
 end
 
@@ -54,7 +52,7 @@ end
 % Function that implements the V-BLAST demodulation algorithm for a received 
 % signal corrupted by noise. The function takes four inputs:
 % 
-% - y_noisy: a noisy received signal with dimensions (numRx, 1, 
+% - ynoisy: a noisy received signal with dimensions (numRx, 1, 
 % num_symbols/numRx) where numRx is the number of receiving antennas and 
 % - num_symbols is the total number of symbols transmitted.
 % - H: the channel matrix with dimensions (numTx, numRx, num_symbols/numRx) 
@@ -64,8 +62,8 @@ end
 % The function returns the final demodulated signal, y_final, which is a 
 % vector of demodulated symbols. The algorithm works as follows:
 % 
-% 1 - Initialize the final demodulated signal to an empty vector.
-% 2 - Loop through each symbol in the received signal (y_noisy).
+% 1 - Initialize the final demodulated signal to a 2D vector of zeros.
+% 2 - Loop through each symbol in the received signal (ynoisy).
 % 3 - Initialize a counter r_counter to keep track of the selected receive 
 % antennas.
 % 4 - Get the received signal for this symbol and the channel matrix for this 
