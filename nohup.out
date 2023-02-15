@@ -1,0 +1,142 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2022 The MathWorks, Inc.
+             R2022a Update 1 (9.12.0.1927505) 64-bit (glnxa64)
+                               April 6, 2022
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+Scenario 1 : 2x2 Tx-Rx
+vblast Elapsed time is 29.152976 seconds.
+zf Elapsed time is 0.691679 seconds.
+vblast Elapsed time is 28.954021 seconds.
+zf Elapsed time is 0.691965 seconds.
+vblast Elapsed time is 28.951752 seconds.
+zf Elapsed time is 0.687971 seconds.
+vblast Elapsed time is 28.940780 seconds.
+zf Elapsed time is 0.685378 seconds.
+vblast Elapsed time is 29.330554 seconds.
+zf Elapsed time is 0.690654 seconds.
+vblast Elapsed time is 28.944967 seconds.
+zf Elapsed time is 0.691482 seconds.
+vblast Elapsed time is 28.933434 seconds.
+zf Elapsed time is 0.686954 seconds.
+vblast Elapsed time is 28.954002 seconds.
+zf Elapsed time is 0.686371 seconds.
+vblast Elapsed time is 28.860945 seconds.
+zf Elapsed time is 0.690054 seconds.
+vblast Elapsed time is 29.013977 seconds.
+zf Elapsed time is 0.690989 seconds.
+Printed 2x2
+Scenario 2: 4x4 Tx-Rx
+vblast Elapsed time is 59.379448 seconds.
+zf Elapsed time is 0.969836 seconds.
+vblast Elapsed time is 59.545716 seconds.
+zf Elapsed time is 0.967605 seconds.
+vblast Elapsed time is 59.451947 seconds.
+zf Elapsed time is 0.962682 seconds.
+vblast Elapsed time is 59.744399 seconds.
+zf Elapsed time is 0.977480 seconds.
+vblast Elapsed time is 59.047859 seconds.
+zf Elapsed time is 0.966565 seconds.
+vblast Elapsed time is 59.729838 seconds.
+zf Elapsed time is 0.959321 seconds.
+vblast Elapsed time is 59.697335 seconds.
+zf Elapsed time is 0.956148 seconds.
+vblast Elapsed time is 59.631124 seconds.
+zf Elapsed time is 0.960862 seconds.
+vblast Elapsed time is 59.768852 seconds.
+zf Elapsed time is 0.955741 seconds.
+vblast Elapsed time is 59.799339 seconds.
+zf Elapsed time is 0.967373 seconds.
+Printed 4x4
+Scenario 3: 8x8 Tx-Rx
+vblast Elapsed time is 125.782280 seconds.
+zf Elapsed time is 1.744446 seconds.
+vblast Elapsed time is 125.388313 seconds.
+zf Elapsed time is 1.745271 seconds.
+vblast Elapsed time is 125.404596 seconds.
+zf Elapsed time is 1.737725 seconds.
+vblast Elapsed time is 126.258656 seconds.
+zf Elapsed time is 1.743560 seconds.
+vblast Elapsed time is 126.263009 seconds.
+zf Elapsed time is 1.736225 seconds.
+vblast Elapsed time is 125.785617 seconds.
+zf Elapsed time is 1.751579 seconds.
+vblast Elapsed time is 126.582188 seconds.
+zf Elapsed time is 1.749880 seconds.
+vblast Elapsed time is 126.053355 seconds.
+zf Elapsed time is 1.778603 seconds.
+vblast Elapsed time is 126.489728 seconds.
+zf Elapsed time is 1.741652 seconds.
+vblast Elapsed time is 126.347050 seconds.
+zf Elapsed time is 1.741232 seconds.
+Printed 8x8
+Scenario 4: 16x16 Tx-Rx
+vblast Elapsed time is 306.638100 seconds.
+zf Elapsed time is 5.230382 seconds.
+vblast Elapsed time is 305.822127 seconds.
+zf Elapsed time is 4.849974 seconds.
+vblast Elapsed time is 307.573717 seconds.
+zf Elapsed time is 4.719773 seconds.
+vblast Elapsed time is 307.151742 seconds.
+zf Elapsed time is 4.941483 seconds.
+vblast Elapsed time is 303.556439 seconds.
+zf Elapsed time is 4.979894 seconds.
+vblast Elapsed time is 308.195644 seconds.
+zf Elapsed time is 5.234327 seconds.
+vblast Elapsed time is 307.204692 seconds.
+zf Elapsed time is 4.759048 seconds.
+vblast Elapsed time is 300.952119 seconds.
+zf Elapsed time is 4.731870 seconds.
+vblast Elapsed time is 307.333342 seconds.
+zf Elapsed time is 5.603467 seconds.
+vblast Elapsed time is 313.561910 seconds.
+zf Elapsed time is 5.084828 seconds.
+Printed 16x16
+Scenario 5: 32x32 Tx-Rx
+vblast Elapsed time is 1039.310160 seconds.
+zf Elapsed time is 23.227267 seconds.
+vblast Elapsed time is 1071.392272 seconds.
+zf Elapsed time is 28.834437 seconds.
+vblast Elapsed time is 1359.470085 seconds.
+zf Elapsed time is 31.402830 seconds.
+vblast Elapsed time is 1584.854870 seconds.
+zf Elapsed time is 46.628697 seconds.
+vblast Elapsed time is 2165.956478 seconds.
+zf Elapsed time is 48.137530 seconds.
+vblast Elapsed time is 2160.327217 seconds.
+zf Elapsed time is 46.722488 seconds.
+vblast Elapsed time is 2024.459070 seconds.
+zf Elapsed time is 46.799744 seconds.
+vblast Elapsed time is 1955.863973 seconds.
+zf Elapsed time is 46.181366 seconds.
+vblast Elapsed time is 2121.627861 seconds.
+zf Elapsed time is 58.255304 seconds.
+vblast Elapsed time is 2474.260851 seconds.
+zf Elapsed time is 45.341794 seconds.
+Printed 32x32
+Scenario 6: 64x64 Tx-Rx
+vblast Elapsed time is 5469.092211 seconds.
+zf Elapsed time is 78.553436 seconds.
+vblast Elapsed time is 4685.810247 seconds.
+zf Elapsed time is 77.216014 seconds.
+vblast Elapsed time is 4634.315608 seconds.
+zf Elapsed time is 77.320789 seconds.
+vblast Elapsed time is 4649.401155 seconds.
+zf Elapsed time is 77.467039 seconds.
+vblast Elapsed time is 4738.514790 seconds.
+zf Elapsed time is 96.156854 seconds.
+vblast Elapsed time is 4867.126455 seconds.
+zf Elapsed time is 77.166833 seconds.
+vblast Elapsed time is 4638.918518 seconds.
+zf Elapsed time is 77.124429 seconds.
+vblast Elapsed time is 4641.106063 seconds.
+zf Elapsed time is 77.105555 seconds.
+vblast Elapsed time is 4636.056393 seconds.
+zf Elapsed time is 77.138795 seconds.
+vblast Elapsed time is 4639.997521 seconds.
+zf Elapsed time is 77.088714 seconds.
+Printed 64x64
