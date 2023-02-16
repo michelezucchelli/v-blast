@@ -14,33 +14,15 @@ scenario_num = length(numTx);
 M = 16;
 
 % number of transmitted symbols (the larger the more precise the results will be)
-%num_symbols = 65536*numTx;
 num_symbols = 98304*numTx;
 
 % points to plot
-% points = 20;
 points = 10;
 % Min and Max Eb/N0
 eb_n0_min = 8;
 eb_n0_max = 18;
 % generates an array of Eb/N0 values in the range [eb_n0_min, eb_n0_max] with a length equal to points
 eb_n0 = linspace(eb_n0_min,eb_n0_max,points);
-
-% % min and max value for snr
-% snr_min = 15;
-% snr_max = 35;
-% % generates an array of SNR values in the range [snr_min, snr_max] with a length equal to points
-% snr=linspace(snr_min,snr_max,points);
-% 
-% % Energy per symbol
-% Es = sum(abs(symbols).^2) / length(symbols);
-% % Energy per bit
-% Eb = Es / log2(M);
-% % Convert SNR to Eb/N0
-% eb_n0 = snr - 10 * log10(Eb);
-% % Min and Max Eb/N0
-% eb_n0_min = min(eb_n0);
-% eb_n0_max = max(eb_n0);
 
 % Initialize Bit Error Rate vector for ZF and V-BLAST
 ber_zf = zeros(scenario_num, points);
@@ -190,27 +172,3 @@ ylabel('Bit Error Rate');
 grid on
 saveas(fig6464,'64x64.jpg');
 fprintf("Printed 64x64\n");
-%% 
-fprintf("Scenario 7: 128x128 Tx-Rx\n");
-
-% simulation index
-index_sim = 7;
-
-% Compute the ber
-[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols(index_sim), M, eb_n0);
-
-% plot the results
-fig128128 = figure;
-semilogy(eb_n0,ber_vblast(index_sim,:),'g-o');
-hold on;
-semilogy(eb_n0,ber_zf(index_sim,:),'r-o');
-hold off
-xlim([eb_n0_min-3, eb_n0_max+3])
-ylim([10^-6, 10^-1])
-title({ strcat('BER for: ', num2str(numTx(index_sim)), 'x' , num2str(numRx(index_sim)), ' Antennas')})
-legend('V-Blast','Zero-Forcing');
-xlabel('Eb/N0 (dB)');
-ylabel('Bit Error Rate');
-grid on
-saveas(fig128128,'128x128.jpg');
-fprintf("Printed 128x128\n");
