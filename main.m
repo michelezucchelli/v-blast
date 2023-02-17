@@ -14,7 +14,9 @@ scenario_num = length(numTx);
 M = 16;
 
 % number of transmitted symbols (the larger the more precise the results will be)
-num_symbols = 98304*numTx;
+
+num_symbols = 6291456;
+
 
 % points to plot
 points = 10;
@@ -34,7 +36,7 @@ fprintf("Scenario 1 : 2x2 Tx-Rx\n");
 index_sim = 1;
 
 % Compute the ber
-[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols(index_sim), M, eb_n0);
+[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols, M, eb_n0);
 
 % plot the results
 fig22 = figure;
@@ -58,7 +60,7 @@ fprintf("Scenario 2: 4x4 Tx-Rx\n");
 index_sim = 2;
 
 % Compute the ber
-[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols(index_sim), M, eb_n0);
+[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols, M, eb_n0);
 
 
 % plot the results
@@ -83,7 +85,7 @@ index_sim = 3;
 
 % Compute the ber
 
-[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols(index_sim), M, eb_n0);
+[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols, M, eb_n0);
 
 % plot the results
 fig88 = figure;
@@ -107,7 +109,7 @@ fprintf("Scenario 4: 16x16 Tx-Rx\n");
 index_sim = 4;
 
 % Compute the ber
-[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols(index_sim), M, eb_n0);
+[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols, M, eb_n0);
 
 % plot the results
 fig1616 = figure;
@@ -131,7 +133,7 @@ fprintf("Scenario 5: 32x32 Tx-Rx\n");
 index_sim = 5;
 
 % Compute the ber
-[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols(index_sim), M, eb_n0);
+[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols, M, eb_n0);
 
 % plot the results
 fig3232 = figure;
@@ -155,7 +157,7 @@ fprintf("Scenario 6: 64x64 Tx-Rx\n");
 index_sim = 6;
 
 % Compute the ber
-[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols(index_sim), M, eb_n0);
+[ber_zf(index_sim,:), ber_vblast(index_sim,:)] = com_sys(numTx(index_sim), numRx(index_sim), num_symbols, M, eb_n0);
 
 % plot the results
 fig6464 = figure;
