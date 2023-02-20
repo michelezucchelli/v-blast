@@ -49,7 +49,7 @@ function y_final = vblast_decoding(num_symbols, numRx, H, ynoisy)
 end
 
 %% Function Description
-% Function that implements the V-BLAST demodulation algorithm for a received 
+% Function that implements the V-BLAST algorithm for a received 
 % signal corrupted by noise. The function takes four inputs:
 % 
 % - ynoisy: a noisy received signal with dimensions (numRx, 1, 
